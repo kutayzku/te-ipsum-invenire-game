@@ -11,6 +11,8 @@ func _ready() -> void:
 
 #selamun aleykum
 #bunu görüyorsan github calısıyor - Koray
+# 12.10.2024 - 16:58
+
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
