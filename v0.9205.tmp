@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk3u61qqxwcup"]
+
+[ext_resource type="Texture2D" uid="uid://b358ltn2u15tw" path="res://icon.svg" id="1_l2qk6"]
+[ext_resource type="Script" path="res://Characters/Player/player.gd" id="2_67sp4"]
+[ext_resource type="Texture2D" uid="uid://bdo2y14xj2uc0" path="res://Characters/Adam_16x16.png" id="3_wivpm"]
+
+[node name="World" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(700, 247)
+texture = ExtResource("1_l2qk6")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_67sp4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(224, 207)
+scale = Vector2(5.6875, 5.6875)
+texture = ExtResource("3_wivpm")
+hframes = 24
+vframes = 7
