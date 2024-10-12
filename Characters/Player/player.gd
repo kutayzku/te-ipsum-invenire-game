@@ -10,6 +10,7 @@ func _ready() -> void:
 	velocity = Vector2.ZERO
 
 #selamun aleykum
+#bunu görüyorsan github calısıyor - Koray
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
