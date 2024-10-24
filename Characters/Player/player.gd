@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
-const asd = 3.5
+#normal movement(hareket) constantları
+const ACCELERATION = 1750
+const MAX_SPEED = 350
+const FRICTION = 1750
 
-const ACCELERATION = 500 * asd
-const MAX_SPEED = 100 * asd
-const FRICTION = 500 * asd
+#dash ile ilgili ivirzivir
+const DASH_SPEED_CARPANİ = 4.0 #duruma göre degistirilebilir
+const DASH_SURESI = 0.15 # saniye
+var is_dashing = false
+var dash_time_left = 0.0
 
 func _ready() -> void:
 	velocity = Vector2.ZERO
@@ -20,13 +25,29 @@ func _physics_process(delta: float) -> void:
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
 	#print(input_vector)
+
+	#---------------------------------------------------------------------
+	#DASH BASLANGİC	
+	if not is_dashing and Input.is_action_just_pressed("ui_dash") and input_vector != Vector2.ZERO and not is_dashing:
+		#bu orospu evladi kisim yarim saat ugrastirdi
+		is_dashing = true;
+		dash_time_left = DASH_SURESI;
+		velocity = input_vector * MAX_SPEED * 5.313169;
+	elif is_dashing:
+		while dash_time_left > 0:
+			dash_time_left -= 0.0005;
+		velocity = input_vector * MAX_SPEED;
+	if dash_time_left <= 0:
+		is_dashing = false;
+	#DASH BİTİS
+	#---------------------------------------------------------------------
 	
-	if input_vector != Vector2.ZERO:
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-			
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
-	print(velocity)
+	#NORMAL HAREKET
+	if not is_dashing:
+		if input_vector != Vector2.ZERO:
+			velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)		
+		else:
+			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
+	print(velocity)
 	move_and_slide()
