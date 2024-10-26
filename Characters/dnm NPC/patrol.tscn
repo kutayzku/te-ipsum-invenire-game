@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4exvr4yd0yyd"]
+
+[ext_resource type="Script" path="res://patrol.gd" id="1_32bf3"]
+
+[node name="patrol" type="Node2D"]
+script = ExtResource("1_32bf3")

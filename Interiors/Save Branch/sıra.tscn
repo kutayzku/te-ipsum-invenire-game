@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8gxc2ub2wge3"]
+
+[ext_resource type="Texture2D" uid="uid://c03iuc0bj7gmi" path="res://Interiors/Interiors_free_32x32.png" id="1_wtgom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3apq6"]
+size = Vector2(76, 74.5625)
+
+[node name="sıra 1 Sıralar" type="StaticBody2D"]
+
+[node name="masa sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("1_wtgom")
+region_enabled = true
+region_rect = Rect2(78, 1282, 44, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.28125)
+shape = SubResource("RectangleShape2D_3apq6")

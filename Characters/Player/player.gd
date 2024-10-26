@@ -6,13 +6,16 @@ const MAX_SPEED = 350
 const FRICTION = 1750
 
 #dash ile ilgili ivirzivir
-const DASH_SPEED_CARPANİ = 4.0 #duruma göre degistirilebilir
+const DASH_SPEED_CARPANİ = 15.0 #duruma göre degistirilebilir
 const DASH_SURESI = 0.15 # saniye
 var is_dashing = false
 var dash_time_left = 0.0
 
+@onready var animatonPlayer = $AnimationPlayer
+
 func _ready() -> void:
 	velocity = Vector2.ZERO
+	#animatonPlayer = $AnimationPlayer
 
 #selamun aleykum
 #bunu görüyorsan github calısıyor - Koray
@@ -45,8 +48,17 @@ func _physics_process(delta: float) -> void:
 	#NORMAL HAREKET
 	if not is_dashing:
 		if input_vector != Vector2.ZERO:
+			
+			if input_vector.x > 0 :
+				$Sprite2D.flip_h = false
+				animatonPlayer.play("RunRight")
+			else:
+				$Sprite2D.flip_h = true
+				animatonPlayer.play("RunRight")
+				
 			velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)		
 		else:
+			animatonPlayer.play("IdleDown")
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
 	print(velocity)

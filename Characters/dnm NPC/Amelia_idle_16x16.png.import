@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdo2y14xj2uc0"
-path="res://.godot/imported/Adam_16x16.png-9b0b03c9350fe39eb33d261b54eeb3ba.ctex"
+uid="uid://3pmrd745260b"
+path="res://.godot/imported/Amelia_idle_16x16.png-6f48849366b76c33a5bad94f93c41eeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Adam_16x16.png"
-dest_files=["res://.godot/imported/Adam_16x16.png-9b0b03c9350fe39eb33d261b54eeb3ba.ctex"]
+source_file="res://Characters/dnm NPC/Amelia_idle_16x16.png"
+dest_files=["res://.godot/imported/Amelia_idle_16x16.png-6f48849366b76c33a5bad94f93c41eeb.ctex"]
 
 [params]
 

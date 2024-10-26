@@ -1,42 +1,83 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk3u61qqxwcup"]
+[gd_scene load_steps=8 format=3 uid="uid://bk3u61qqxwcup"]
 
+[ext_resource type="Texture2D" uid="uid://cnj4y7p87twr0" path="res://Interiors/flore dnm 1.png" id="1_44uky"]
 [ext_resource type="Texture2D" uid="uid://b358ltn2u15tw" path="res://icon.svg" id="1_l2qk6"]
-[ext_resource type="Script" path="res://Characters/Player/player.gd" id="2_67sp4"]
-[ext_resource type="Texture2D" uid="uid://bdo2y14xj2uc0" path="res://Characters/Adam_16x16.png" id="3_wivpm"]
 [ext_resource type="Texture2D" uid="uid://c03iuc0bj7gmi" path="res://Interiors/Interiors_free_32x32.png" id="4_dgq0s"]
+[ext_resource type="PackedScene" uid="uid://cj6ysb2fvdlvo" path="res://Characters/Player/player.tscn" id="4_f6m1a"]
+[ext_resource type="PackedScene" uid="uid://b8gxc2ub2wge3" path="res://Interiors/Save Branch/sıra.tscn" id="4_jsttu"]
+[ext_resource type="PackedScene" uid="uid://c1q6uuo5ftouh" path="res://Characters/dnm NPC/npc_oc_hoca.tscn" id="6_7wdrr"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jbcj1"]
-radius = 15.0
-height = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swb6b"]
+size = Vector2(60, 42)
 
 [node name="World" type="Node2D"]
 
+[node name="Floor" type="TextureRect" parent="."]
+offset_left = -88.0
+offset_top = 40.0
+offset_right = 896.0
+offset_bottom = 608.0
+texture = ExtResource("1_44uky")
+stretch_mode = 1
+
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(700, 247)
+position = Vector2(800, 120)
 texture = ExtResource("1_l2qk6")
 
 [node name="InteriorsFree32x32" type="Sprite2D" parent="."]
-position = Vector2(256, 352)
+position = Vector2(160, 208)
 scale = Vector2(1.64286, 1.64286)
 texture = ExtResource("4_dgq0s")
 region_enabled = true
 region_rect = Rect2(204, 594, 42, 62)
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(300, 433)
-script = ExtResource("2_67sp4")
+[node name="dış duvar dnm" type="StaticBody2D" parent="."]
+position = Vector2(1446, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(3.40625, 3.40625)
-texture = ExtResource("3_wivpm")
-hframes = 24
-vframes = 7
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dış duvar dnm"]
+polygon = PackedVector2Array(680, 112, 72, 120, 72, 520, 672, 504, 674, 291, 680, 112, 792, 112, 784, 288, 776, 504, 776, 552, 512, 560, 32, 568, 32, 72, 680, 64)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, 40)
-shape = SubResource("CapsuleShape2D_jbcj1")
+[node name="Sıra 1 and all" parent="." instance=ExtResource("4_jsttu")]
+position = Vector2(288, 208)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Sıra 2" parent="Sıra 1 and all" instance=ExtResource("4_jsttu")]
+position = Vector2(0, 128)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(672, 112, 89, 124, 94, 517, 672, 504, 674, 291, 670, 115, 936, 96, 936, 256, 920, 408, 864, 512, 512, 560, 32, 568, 56, 100)
+[node name="Sıra 3" parent="Sıra 1 and all/Sıra 2" instance=ExtResource("4_jsttu")]
+position = Vector2(136, -128)
+
+[node name="Sıra 4" parent="Sıra 1 and all/Sıra 2/Sıra 3" instance=ExtResource("4_jsttu")]
+position = Vector2(0, 128)
+
+[node name="NPC OC HOCA" parent="." instance=ExtResource("6_7wdrr")]
+position = Vector2(504, 394)
+
+[node name="Marker2D" type="Marker2D" parent="." groups=["Oc hoca"]]
+position = Vector2(507, 523)
+
+[node name="Icon2" type="Sprite2D" parent="Marker2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_l2qk6")
+
+[node name="Marker2D2" type="Marker2D" parent="." groups=["Oc hoca"]]
+position = Vector2(759, 526)
+
+[node name="Icon2" type="Sprite2D" parent="Marker2D2"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_l2qk6")
+
+[node name="tahta" type="StaticBody2D" parent="."]
+
+[node name="tahta" type="Sprite2D" parent="tahta"]
+position = Vector2(664, 240)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("4_dgq0s")
+region_enabled = true
+region_rect = Rect2(504, 1256, 8, 72)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tahta"]
+position = Vector2(159, 234)
+shape = SubResource("RectangleShape2D_swb6b")
+
+[node name="Player" parent="." instance=ExtResource("4_f6m1a")]
+position = Vector2(120, 392)
