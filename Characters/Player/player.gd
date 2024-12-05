@@ -49,11 +49,11 @@ func _physics_process(delta: float) -> void:
 	if not is_dashing:
 		if input_vector != Vector2.ZERO:
 			
-			if input_vector.x > 0 :
-				$Sprite2D.flip_h = false
+			if input_vector.x < 0 :
+				$Sprite2D.flip_h = true
 				animatonPlayer.play("RunRight")
 			else:
-				$Sprite2D.flip_h = true
+				$Sprite2D.flip_h = false
 				animatonPlayer.play("RunRight")
 				
 			velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)		
