@@ -17,6 +17,7 @@ size = Vector2(62, 45)
 b = Vector2(0, 392)
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Floor" type="TextureRect" parent="."]
 offset_right = 1024.0
@@ -25,8 +26,10 @@ texture = ExtResource("1_44uky")
 stretch_mode = 1
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(1088, 64)
+position = Vector2(896, 32)
+scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("1_l2qk6")
+centered = false
 
 [node name="dış duvar dnm" type="StaticBody2D" parent="."]
 position = Vector2(1446, 32)
@@ -35,7 +38,7 @@ position = Vector2(1446, 32)
 polygon = PackedVector2Array(680, 112, 72, 120, 72, 520, 672, 504, 674, 291, 680, 112, 792, 112, 784, 288, 776, 504, 776, 552, 512, 560, 32, 568, 32, 72, 680, 64)
 
 [node name="Sıra 1 and all" parent="." instance=ExtResource("4_jsttu")]
-position = Vector2(288, 208)
+position = Vector2(224, 112)
 
 [node name="Sıra 2" parent="Sıra 1 and all" instance=ExtResource("4_jsttu")]
 position = Vector2(0, 128)
@@ -61,17 +64,17 @@ position = Vector2(2, -4.5)
 shape = SubResource("RectangleShape2D_cxepv")
 
 [node name="raf" type="StaticBody2D" parent="."]
-position = Vector2(95, 76)
+position = Vector2(61, 60)
 
 [node name="raf" type="Sprite2D" parent="raf"]
-position = Vector2(2, 1)
+position = Vector2(0.500063, -2.07134)
 scale = Vector2(1.64286, 1.64286)
 texture = ExtResource("4_dgq0s")
 region_enabled = true
 region_rect = Rect2(204, 594, 42, 62)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="raf"]
-position = Vector2(2, 25.5)
+position = Vector2(0.500065, 22.4287)
 shape = SubResource("RectangleShape2D_tu0lc")
 
 [node name="wall" type="StaticBody2D" parent="."]
@@ -85,8 +88,9 @@ color = Color(0.408329, 0.408329, 0.408329, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
 shape = SubResource("SegmentShape2D_wgsy5")
 
-[node name="NPC OC HOCA" parent="." instance=ExtResource("6_7wdrr")]
+[node name="NPC OC HOCA" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_7wdrr")]
 position = Vector2(504, 394)
+target = NodePath("../Player")
 
 [node name="Marker2D" type="Marker2D" parent="." groups=["Oc hoca"]]
 position = Vector2(507, 523)
@@ -111,3 +115,5 @@ texture = ExtResource("1_l2qk6")
 
 [node name="Player" parent="." instance=ExtResource("4_f6m1a")]
 position = Vector2(120, 392)
+
+[connection signal="ready" from="NPC OC HOCA" to="NPC OC HOCA" method="_on_ready"]

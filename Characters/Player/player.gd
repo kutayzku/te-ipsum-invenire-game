@@ -61,5 +61,5 @@ func _physics_process(delta: float) -> void:
 			animatonPlayer.play("IdleDown")
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
-	print(velocity)
+	#print(velocity)
 	move_and_slide()
