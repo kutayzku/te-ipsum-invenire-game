@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c03iuc0bj7gmi" path="res://Interiors/Interiors_free_32x32.png" id="4_dgq0s"]
 [ext_resource type="PackedScene" uid="uid://cj6ysb2fvdlvo" path="res://Characters/Player/player.tscn" id="4_f6m1a"]
 [ext_resource type="PackedScene" uid="uid://b8gxc2ub2wge3" path="res://Interiors/Save Branch/sıra.tscn" id="4_jsttu"]
-[ext_resource type="PackedScene" uid="uid://c1q6uuo5ftouh" path="res://Characters/dnm NPC/npc_oc_hoca.tscn" id="6_7wdrr"]
+[ext_resource type="PackedScene" uid="uid://c1q6uuo5ftouh" path="res://Characters/dnm NPC/npc_hoca.tscn" id="6_7wdrr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxepv"]
 size = Vector2(16, 69)
@@ -88,7 +88,7 @@ color = Color(0.408329, 0.408329, 0.408329, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
 shape = SubResource("SegmentShape2D_wgsy5")
 
-[node name="NPC OC HOCA" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_7wdrr")]
+[node name="NPC HOCA" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_7wdrr")]
 position = Vector2(504, 394)
 target = NodePath("../Player")
 
@@ -116,4 +116,4 @@ texture = ExtResource("1_l2qk6")
 [node name="Player" parent="." instance=ExtResource("4_f6m1a")]
 position = Vector2(120, 392)
 
-[connection signal="ready" from="NPC OC HOCA" to="NPC OC HOCA" method="_on_ready"]
+[connection signal="ready" from="NPC HOCA" to="NPC HOCA" method="_on_ready"]

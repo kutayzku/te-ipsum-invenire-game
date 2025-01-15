@@ -17,10 +17,6 @@ func _ready() -> void:
 	velocity = Vector2.ZERO
 	#animatonPlayer = $AnimationPlayer
 
-#selamun aleykum
-#bunu görüyorsan github calısıyor - Koray
-# 12.10.2024 - 16:58
-
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
@@ -32,7 +28,6 @@ func _physics_process(delta: float) -> void:
 	#---------------------------------------------------------------------
 	#DASH BASLANGİC	
 	if not is_dashing and Input.is_action_just_pressed("ui_dash") and input_vector != Vector2.ZERO and not is_dashing:
-		#bu orospu evladi kisim yarim saat ugrastirdi
 		is_dashing = true;
 		dash_time_left = DASH_SURESI;
 		velocity = input_vector * MAX_SPEED * 5.313169;
