@@ -12,6 +12,9 @@ var is_dashing = false
 var dash_time_left = 0.0
 
 @onready var animatonPlayer = $AnimationPlayer
+@onready var animatonTree = $AnimationTree
+@onready var animatonState = animatonTree.get("parameters/playback")
+
 
 func _ready() -> void:
 	velocity = Vector2.ZERO
@@ -43,17 +46,12 @@ func _physics_process(delta: float) -> void:
 	#NORMAL HAREKET
 	if not is_dashing:
 		if input_vector != Vector2.ZERO:
-			
-			if input_vector.x < 0 :
-				$Sprite2D.flip_h = true
-				animatonPlayer.play("RunRight")
-			else:
-				$Sprite2D.flip_h = false
-				animatonPlayer.play("RunRight")
-				
+			animatonTree.set("parameters/Idle/blend_position", input_vector)
+			animatonTree.set("parameters/Run/blend_position", input_vector)	
+			animatonState.travel("Run")
 			velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)		
 		else:
-			animatonPlayer.play("IdleDown")
+			animatonState.travel("Idle")
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
 	#print(velocity)

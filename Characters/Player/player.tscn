@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cj6ysb2fvdlvo"]
+[gd_scene load_steps=29 format=3 uid="uid://cj6ysb2fvdlvo"]
 
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_jpoot"]
 [ext_resource type="Texture2D" uid="uid://bdo2y14xj2uc0" path="res://Characters/Player/Adam_16x16.png" id="2_txdww"]
@@ -123,7 +123,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2)]
+"values": [Vector2i(12, 2), Vector2i(13, 2), Vector2i(14, 2), Vector2i(15, 2), Vector2i(16, 2), Vector2i(17, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_3s8bt"]
@@ -175,6 +175,70 @@ _data = {
 "RunUp": SubResource("Animation_cupso")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u4prn"]
+animation = &"IdleLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_763m1"]
+animation = &"IdleDown"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t7gdj"]
+animation = &"IdleUp"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s3aws"]
+animation = &"IdleRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_nb4iq"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_u4prn")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_763m1")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_t7gdj")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_s3aws")
+blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4qgbu"]
+animation = &"RunLeft"
+
+[sub_resource type="GDScript" id="GDScript_kyseu"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yix3d"]
+animation = &"RunRight"
+script = SubResource("GDScript_kyseu")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hlvs8"]
+animation = &"RunDown"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ps7j2"]
+animation = &"RunUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mkq31"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_4qgbu")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_yix3d")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_hlvs8")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ps7j2")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6n8y8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ixqe2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e5bbf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_de71a"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_nb4iq")
+states/Idle/position = Vector2(586, 149)
+states/Run/node = SubResource("AnimationNodeBlendSpace2D_mkq31")
+states/Run/position = Vector2(731, 143)
+states/Start/position = Vector2(428, 149)
+transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_6n8y8"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_ixqe2"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e5bbf")]
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(300, 433)
 script = ExtResource("1_jpoot")
@@ -208,3 +272,10 @@ drag_left_margin = 0.05
 drag_top_margin = 0.05
 drag_right_margin = 0.05
 drag_bottom_margin = 0.05
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../CollisionShape2D")
+tree_root = SubResource("AnimationNodeStateMachine_de71a")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Run/blend_position = Vector2(0, 0)

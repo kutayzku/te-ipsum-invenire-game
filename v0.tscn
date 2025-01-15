@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bk3u61qqxwcup"]
+[gd_scene load_steps=11 format=3 uid="uid://bk3u61qqxwcup"]
 
 [ext_resource type="Texture2D" uid="uid://cnj4y7p87twr0" path="res://Interiors/flore dnm 1.png" id="1_44uky"]
 [ext_resource type="Texture2D" uid="uid://b358ltn2u15tw" path="res://icon.svg" id="1_l2qk6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cj6ysb2fvdlvo" path="res://Characters/Player/player.tscn" id="4_f6m1a"]
 [ext_resource type="PackedScene" uid="uid://b8gxc2ub2wge3" path="res://Interiors/Save Branch/sıra.tscn" id="4_jsttu"]
 [ext_resource type="PackedScene" uid="uid://c1q6uuo5ftouh" path="res://Characters/dnm NPC/npc_hoca.tscn" id="6_7wdrr"]
+[ext_resource type="PackedScene" uid="uid://c1ki501lhtxre" path="res://Enemies/Bat.tscn" id="7_5ng1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxepv"]
 size = Vector2(16, 69)
@@ -115,5 +116,9 @@ texture = ExtResource("1_l2qk6")
 
 [node name="Player" parent="." instance=ExtResource("4_f6m1a")]
 position = Vector2(120, 392)
+
+[node name="Bat" parent="." instance=ExtResource("7_5ng1t")]
+position = Vector2(287, 418)
+script = null
 
 [connection signal="ready" from="NPC HOCA" to="NPC HOCA" method="_on_ready"]
