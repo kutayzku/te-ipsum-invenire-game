@@ -1,117 +1,94 @@
-[gd_scene load_steps=10 format=3 uid="uid://bk3u61qqxwcup"]
+[gd_scene load_steps=10 format=4 uid="uid://bk3u61qqxwcup"]
 
-[ext_resource type="Texture2D" uid="uid://cnj4y7p87twr0" path="res://Interiors/flore dnm 1.png" id="1_44uky"]
-[ext_resource type="Texture2D" uid="uid://b358ltn2u15tw" path="res://icon.svg" id="1_l2qk6"]
+[ext_resource type="Texture2D" uid="uid://cnj4y7p87twr0" path="res://Interiors/floor dnm 1.png" id="1_44uky"]
 [ext_resource type="Texture2D" uid="uid://c03iuc0bj7gmi" path="res://Interiors/Interiors_free_32x32.png" id="4_dgq0s"]
 [ext_resource type="PackedScene" uid="uid://cj6ysb2fvdlvo" path="res://Characters/Player/player.tscn" id="4_f6m1a"]
 [ext_resource type="PackedScene" uid="uid://b8gxc2ub2wge3" path="res://Interiors/Save Branch/sıra.tscn" id="4_jsttu"]
 [ext_resource type="PackedScene" uid="uid://c1q6uuo5ftouh" path="res://Characters/dnm NPC/npc_hoca.tscn" id="6_7wdrr"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6kc4d"]
+texture = ExtResource("1_44uky")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tqrqr"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.0230207, 0.469612, 1.92523e-07, 1)
+sources/0 = SubResource("TileSetAtlasSource_6kc4d")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxepv"]
 size = Vector2(16, 69)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu0lc"]
-size = Vector2(62, 45)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_wgsy5"]
-b = Vector2(0, 392)
+size = Vector2(49, 45)
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Floor" type="TextureRect" parent="."]
-offset_right = 1024.0
-offset_bottom = 648.0
+[node name="Floor2" type="Sprite2D" parent="."]
+texture_repeat = 2
 texture = ExtResource("1_44uky")
-stretch_mode = 1
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(896, 32)
-scale = Vector2(0.8125, 0.8125)
-texture = ExtResource("1_l2qk6")
 centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1040, 672)
 
-[node name="dış duvar dnm" type="StaticBody2D" parent="."]
-position = Vector2(1446, 32)
+[node name="DümendenYol" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAqAB0AAAACAAAAAAAqABwAAAACAAAAAAAqABsAAAACAAAAAAApAB0AAAACAAAAAAApABwAAAACAAAAAAApABsAAAACAAAAAAAoAB0AAAACAAAAAAAoABwAAAACAAAAAAAoABsAAAACAAAAAAAnAB0AAAACAAAAAAAnABwAAAACAAAAAAAnABsAAAACAAAAAAAmAB0AAAACAAAAAAAmABwAAAACAAAAAAAmABsAAAACAAAAAAAlAB0AAAACAAAAAAAlABwAAAACAAAAAAAlABsAAAACAAAAAAAkAB0AAAACAAAAAAAkABwAAAACAAAAAAAkABsAAAACAAAAAAAjAB0AAAACAAAAAAAjABwAAAACAAAAAAAjABsAAAACAAAAAAAiAB0AAAACAAAAAAAiABwAAAACAAAAAAAiABsAAAACAAAAAAAhAB0AAAACAAAAAAAhABwAAAACAAAAAAAhABsAAAACAAAAAAAgAB0AAAACAAAAAAAgABwAAAACAAAAAAAgABsAAAACAAAAAAAfAB0AAAACAAAAAAAfABwAAAACAAAAAAAfABsAAAACAAAAAAAeAB0AAAACAAAAAAAeABwAAAACAAAAAAAeABsAAAACAAAAAAAdAB0AAAACAAAAAAAdABwAAAACAAAAAAAdABsAAAACAAAAAAAcAB0AAAACAAAAAAAcABwAAAACAAAAAAAcABsAAAACAAAAAAAbAB0AAAACAAAAAAAbABwAAAACAAAAAAAbABsAAAACAAAAAAAaAB0AAAACAAAAAAAaABwAAAACAAAAAAAaABsAAAACAAAAAAAZAB0AAAACAAAAAAAZABwAAAACAAAAAAAZABsAAAACAAAAAAAYAB0AAAACAAAAAAAYABwAAAACAAAAAAAYABsAAAACAAAAAAAXAB0AAAACAAAAAAAXABwAAAACAAAAAAAXABsAAAACAAAAAAAWAB0AAAACAAAAAAAWABwAAAACAAAAAAAWABsAAAACAAAAAAAVAB0AAAACAAAAAAAVABwAAAACAAAAAAAVABsAAAACAAAAAAAUAB0AAAACAAAAAAAUABwAAAACAAAAAAAUABsAAAACAAAAAAATAB0AAAACAAAAAAATABwAAAACAAAAAAATABsAAAACAAAAAAASAB0AAAACAAAAAAASABwAAAACAAAAAAASABsAAAACAAAAAAARAB0AAAACAAAAAAARABwAAAACAAAAAAARABsAAAACAAAAAAAQAB0AAAACAAAAAAAQABwAAAACAAAAAAAQABsAAAACAAAAAAAPAB0AAAACAAAAAAAPABwAAAACAAAAAAAPABsAAAACAAAAAAAOAB0AAAACAAAAAAAOABwAAAACAAAAAAAOABsAAAACAAAAAAANAB0AAAACAAAAAAANABwAAAACAAAAAAANABsAAAACAAAAAAAMAB0AAAACAAAAAAAMABwAAAACAAAAAAAMABsAAAACAAAAAAALAB0AAAACAAAAAAALABwAAAACAAAAAAALABsAAAACAAAAAAAKAB0AAAACAAAAAAAKABwAAAACAAAAAAAKABsAAAACAAAAAAAJAB0AAAACAAAAAAAJABwAAAACAAAAAAAJABsAAAACAAAAAAAIAB0AAAACAAAAAAAIABwAAAACAAAAAAAIABsAAAACAAAAAAAHAB0AAAACAAAAAAAHABwAAAACAAAAAAAHABsAAAACAAAAAAAGAB0AAAACAAAAAAAGABwAAAACAAAAAAAGABsAAAACAAAAAAAFAB0AAAACAAAAAAAFABwAAAACAAAAAAAFABsAAAACAAAAAAAEAB0AAAACAAAAAAAEABwAAAACAAAAAAAEABsAAAACAAAAAAADAB0AAAACAAAAAAADABwAAAACAAAAAAADABsAAAACAAAAAAACAB0AAAACAAAAAAACABwAAAACAAAAAAACABsAAAACAAAAAAABAB0AAAACAAAAAAABABwAAAACAAAAAAABABsAAAACAAAAAAAAAB0AAAACAAAAAAAAABwAAAACAAAAAAAAABsAAAACAAAAAABAAB0AAAACAAAAAABAABwAAAACAAAAAABAABsAAAACAAAAAAA/AB0AAAACAAAAAAA/ABwAAAACAAAAAAA/ABsAAAACAAAAAAA+AB0AAAACAAAAAAA+ABwAAAACAAAAAAA+ABsAAAACAAAAAAA9AB0AAAACAAAAAAA9ABwAAAACAAAAAAA9ABsAAAACAAAAAAA8AB0AAAACAAAAAAA8ABwAAAACAAAAAAA8ABsAAAACAAAAAAA7AB0AAAACAAAAAAA7ABwAAAACAAAAAAA7ABsAAAACAAAAAAA6AB0AAAACAAAAAAA6ABwAAAACAAAAAAA6ABsAAAACAAAAAAA5AB0AAAACAAAAAAA5ABwAAAACAAAAAAA5ABsAAAACAAAAAAA4AB0AAAACAAAAAAA4ABwAAAACAAAAAAA4ABsAAAACAAAAAAA3AB0AAAACAAAAAAA3ABwAAAACAAAAAAA3ABsAAAACAAAAAAA2AB0AAAACAAAAAAA2ABwAAAACAAAAAAA2ABsAAAACAAAAAAA1AB0AAAACAAAAAAA1ABwAAAACAAAAAAA1ABsAAAACAAAAAAA0AB0AAAACAAAAAAA0ABwAAAACAAAAAAA0ABsAAAACAAAAAAAzAB0AAAACAAAAAAAzABwAAAACAAAAAAAzABsAAAACAAAAAAAyAB0AAAACAAAAAAAyABwAAAACAAAAAAAyABsAAAACAAAAAAAxAB0AAAACAAAAAAAxABwAAAACAAAAAAAxABsAAAACAAAAAAAwAB0AAAACAAAAAAAwABwAAAACAAAAAAAwABsAAAACAAAAAAAvAB0AAAACAAAAAAAvABwAAAACAAAAAAAvABsAAAACAAAAAAAuAB0AAAACAAAAAAAuABwAAAACAAAAAAAuABsAAAACAAAAAAAtAB0AAAACAAAAAAAtABwAAAACAAAAAAAtABsAAAACAAAAAAAsAB0AAAACAAAAAAAsABwAAAACAAAAAAAsABsAAAACAAAAAAArAB0AAAACAAAAAAArABwAAAACAAAAAAArABsAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_tqrqr")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dış duvar dnm"]
-polygon = PackedVector2Array(680, 112, 72, 120, 72, 520, 672, 504, 674, 291, 680, 112, 792, 112, 784, 288, 776, 504, 776, 552, 512, 560, 32, 568, 32, 72, 680, 64)
+[node name="Desks" parent="." instance=ExtResource("4_jsttu")]
+position = Vector2(224, 111)
 
-[node name="Sıra 1 and all" parent="." instance=ExtResource("4_jsttu")]
-position = Vector2(224, 112)
-
-[node name="Sıra 2" parent="Sıra 1 and all" instance=ExtResource("4_jsttu")]
+[node name="Sıra 2" parent="Desks" instance=ExtResource("4_jsttu")]
 position = Vector2(0, 128)
 
-[node name="Sıra 3" parent="Sıra 1 and all/Sıra 2" instance=ExtResource("4_jsttu")]
+[node name="Sıra 3" parent="Desks/Sıra 2" instance=ExtResource("4_jsttu")]
 position = Vector2(136, -128)
 
-[node name="Sıra 4" parent="Sıra 1 and all/Sıra 2/Sıra 3" instance=ExtResource("4_jsttu")]
+[node name="Sıra 4" parent="Desks/Sıra 2/Sıra 3" instance=ExtResource("4_jsttu")]
 position = Vector2(0, 128)
 
-[node name="tahta" type="StaticBody2D" parent="."]
+[node name="Board" type="StaticBody2D" parent="."]
 position = Vector2(1016, 288)
 
-[node name="tahta" type="Sprite2D" parent="tahta"]
+[node name="Tahta" type="Sprite2D" parent="Board"]
 position = Vector2(0.999996, -22)
 scale = Vector2(1.7, 1.7)
 texture = ExtResource("4_dgq0s")
 region_enabled = true
 region_rect = Rect2(504, 1256, 8, 72)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tahta"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board"]
 position = Vector2(2, -4.5)
 shape = SubResource("RectangleShape2D_cxepv")
 
-[node name="raf" type="StaticBody2D" parent="."]
+[node name="Shelf" type="StaticBody2D" parent="."]
 position = Vector2(61, 60)
 
-[node name="raf" type="Sprite2D" parent="raf"]
-position = Vector2(0.500063, -2.07134)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf"]
+position = Vector2(136, 20)
+shape = SubResource("RectangleShape2D_tu0lc")
+
+[node name="raf" type="Sprite2D" parent="Shelf/CollisionShape2D"]
+position = Vector2(-3, -30)
 scale = Vector2(1.64286, 1.64286)
 texture = ExtResource("4_dgq0s")
 region_enabled = true
 region_rect = Rect2(204, 594, 42, 62)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="raf"]
-position = Vector2(0.500065, 22.4287)
-shape = SubResource("RectangleShape2D_tu0lc")
-
-[node name="wall" type="StaticBody2D" parent="."]
-position = Vector2(1024, 168)
-
-[node name="ColorRect" type="ColorRect" parent="wall"]
-offset_right = 16.0
-offset_bottom = 392.0
-color = Color(0.408329, 0.408329, 0.408329, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
-shape = SubResource("SegmentShape2D_wgsy5")
-
 [node name="NPC HOCA" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_7wdrr")]
 position = Vector2(504, 394)
 target = NodePath("../Player")
-
-[node name="Marker2D" type="Marker2D" parent="." groups=["Oc hoca"]]
-position = Vector2(507, 523)
-
-[node name="Icon2" type="Sprite2D" parent="Marker2D"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_l2qk6")
-
-[node name="Marker2D2" type="Marker2D" parent="." groups=["Oc hoca"]]
-position = Vector2(759, 525)
-
-[node name="Icon2" type="Sprite2D" parent="Marker2D2"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_l2qk6")
-
-[node name="Marker2D3" type="Marker2D" parent="." groups=["Oc hoca"]]
-position = Vector2(760, 399)
-
-[node name="Icon2" type="Sprite2D" parent="Marker2D3"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_l2qk6")
 
 [node name="Player" parent="." instance=ExtResource("4_f6m1a")]
 position = Vector2(120, 392)

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnj4y7p87twr0"
-path="res://.godot/imported/flore dnm 1.png-04e0c2b468162d93ffedf5175c3ae165.ctex"
+path="res://.godot/imported/floor dnm 1.png-99b457593930406e2126361a375b657b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interiors/flore dnm 1.png"
-dest_files=["res://.godot/imported/flore dnm 1.png-04e0c2b468162d93ffedf5175c3ae165.ctex"]
+source_file="res://Interiors/floor dnm 1.png"
+dest_files=["res://.godot/imported/floor dnm 1.png-99b457593930406e2126361a375b657b.ctex"]
 
 [params]
 
